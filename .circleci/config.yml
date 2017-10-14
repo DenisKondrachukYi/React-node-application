@@ -2,17 +2,17 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-workflows:
-  version: 2
-  test_and_build:
-    jobs:
-        - test
-        - docker_build:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
+#workflows:
+#  version: 2
+#  test_and_build:
+#    jobs:
+#        - test
+#        - docker_build:
+#          requires:
+#            - test
+#          filters:
+#            branches:
+#              only: master
 
 version: 2
 jobs:
