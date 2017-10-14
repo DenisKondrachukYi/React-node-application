@@ -48,7 +48,7 @@ jobs:
       # run tests!
       - run: yarn test
       - run: node_modules/.bin/codecov --token=$CODE_COV
-  docker_build:
+  build:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
