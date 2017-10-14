@@ -37,10 +37,11 @@ jobs:
       - run: yarn test
       - run: node_modules/.bin/codecov --token=$CODE_COV
   docker_build:
-      - image: circleci/node:7.10 
-      working_directory: ~/repo
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
 
-      steps:
+    steps:
        - checkout
        - setup_remote_docker
        # Download and cache dependencies
