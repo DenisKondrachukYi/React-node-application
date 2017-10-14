@@ -2,6 +2,18 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+workflows:
+  version: 2
+  test_and_build:
+    jobs:
+        - test
+        - docker_build:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+
 version: 2
 jobs:
   test:
@@ -61,16 +73,4 @@ jobs:
        - run: docker build -t deniskondrachuk/react-app .
        - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
        - run: docker push deniskondrachuk/react-app
-       - run: docker logout 
-
-workflows:
-  version: 2
-  test_&_build:
-    jobs:
-        - test
-        - docker_build:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
+       - run: docker logout
