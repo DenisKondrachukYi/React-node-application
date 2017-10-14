@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+import * as compression from 'compression';
 // Run the app by serving the static files
 // in the dist directory
 app.use(express.static(__dirname + '/build'));
@@ -12,6 +13,9 @@ app.use(express.static(__dirname + '/build'));
 app.get('/*', (req: any, res: any) => {
     res.sendFile(path.join(__dirname + '/build/index.html'));
 });
+
+
+app.use(compression());
 
 
 app.listen(process.env.PORT || 8080, );
