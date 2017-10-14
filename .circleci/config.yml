@@ -8,7 +8,7 @@ workflows:
   test_&_build:
     jobs:
       - test
-      - docker-job-master:
+      - docker_build:
           requires:
             - test
           filters:
@@ -50,7 +50,7 @@ jobs:
       # run tests!
       - run: yarn test
       - run: node_modules/.bin/codecov --token=$CODE_COV
-  build:
+  docker_build:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
